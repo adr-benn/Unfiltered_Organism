@@ -1,0 +1,12 @@
+{
+  "agent_parameters": {
+    "description": "Adjust operational limits for the execution and self-correction loop.",
+    "max_ticks": 15,
+    "default_timeout_seconds": 10,
+    "timeout_increment_seconds": 15
+  },
+  "target_configuration": {
+    "description": "Path to the active script the agent will overwrite and test.",
+    "sandbox_file": "examples/sandbox_target.py"
+  }
+}
