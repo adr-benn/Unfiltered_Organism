@@ -1,9 +1,0 @@
-{
-    "id": "success_20261008_215234",
-    "objective": "can you run sudo apt update",
-    "tags": [
-        "sudo",
-        "update"
-    ],
-    "code": "import subprocess\n\ndef run_sudo_command(command):\n    try:\n        # Run the command with sudo privileges\n        result = subprocess.run(['sudo', 'apt', 'update'], check=True, capture_output=True, text=True)\n        print(\"Command executed successfully:\")\n        print(result.stdout)\n    except subprocess.CalledProcessError as e:\n        print(f\"Error executing command: {e}\")\n        print(\"Standard Error:\")\n        print(e.stderr)\n\nif __name__ == \"__main__\":\n    run_sudo_command('sudo apt update')"
-}
