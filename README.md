@@ -5,6 +5,17 @@
 
 ---
 
+## ⚡ What's New in v2
+
+Version 2 introduces critical structural refactoring and stability improvements to address broken execution loops and unfunctional main entry points:
+
+* **Engine Routing Isolation (`engine.py`)**: Completely decoupled LLM communication into a robust, multi-provider engine supporting local Ollama weights as well as cloud-based fallback routes (Claude, Gemini, OpenAI) with configurable temperature control.
+* **Strict Governor Control Loop (`main.py`)**: Fixed unfunctional state tracking in the main loop. The governor now cleanly manages execution retries, dynamic timeouts, and communicates cleanly with sandbox targets without raising unbound local errors.
+* **Enhanced Mutation Watchdog**: Upgraded error signature tracking. If the agent hits a repeating error twice in a row, a hard system override forces a structural rewrite rather than falling into an infinite loop of identical failures.
+* **Pluggable Persistence (`memory_vault/storage_driver.py`)**: Cleaned up modular file I/O and keyword relevance scoring to fetch past successful code blueprints more efficiently.
+
+---
+
 > *From Trial-and-Error to Self-Evolution.*
 
 **Unfiltered Organism** is an autonomous Python coding agent harness designed with a strict governance loop, a secure execution sandbox, and a self-reflection mechanism that forces architectural mutation when the agent gets trapped in repeating error loops.

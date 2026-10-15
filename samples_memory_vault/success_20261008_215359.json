@@ -1,0 +1,11 @@
+{
+    "id": "success_20261008_215359",
+    "objective": "can you run apt update and upgrade this machine for me?",
+    "tags": [
+        "update",
+        "upgrade",
+        "this",
+        "machine"
+    ],
+    "code": "import subprocess\n\ndef run_command(command, timeout=10):\n    try:\n        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout)\n        return result.stdout.decode('utf-8')\n    except subprocess.TimeoutExpired:\n        print(f\"Command '{command}' timed out after {timeout} seconds.\")\n        return None\n    except subprocess.CalledProcessError as e:\n        print(f\"Command '{command}' failed with exit code {e.returncode}:\")\n        print(e.stderr.decode('utf-8'))\n        return None\n\ndef update_and_upgrade():\n    update_command = \"sudo apt update\"\n    upgrade_command = \"sudo apt upgrade -y\"\n\n    print(\"Running 'apt update'...\")\n    update_output = run_command(update_command)\n    if update_output:\n        print(\"Update output:\")\n        print(update_output)\n\n    print(\"\\nRunning 'apt upgrade'...\")\n    upgrade_output = run_command(upgrade_command)\n    if upgrade_output:\n        print(\"Upgrade output:\")\n        print(upgrade_output)\n\nif __name__ == \"__main__\":\n    update_and_upgrade()"
+}
