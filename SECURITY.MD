@@ -1,8 +1,9 @@
-(*For Review by Owner*)
+(*For owner Review)
 
-# Security Model 
+# Execution Model
 
-A factual description of how code is executed by the harness. Descriptive only.
+A quick walkthrough of how the harness runs code, for anyone getting oriented
+with the project. Descriptive only.
 
 ## Execution path
 
@@ -23,7 +24,7 @@ Each tick of the governor loop (`main.py`):
 
 - Generated code runs under the same Python interpreter, OS user, filesystem,
   and network access as the governor process.
-- The only constraint applied to a run is the `timeout_seconds` value.
+- Runs are bounded by the `timeout_seconds` value from `config.json`.
 
 ## Model endpoints
 
